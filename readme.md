@@ -1,122 +1,181 @@
-# 🛠️ Handyman Company Web Portal – Feature Specification
+# 🏗️ Construction Management Web Portal
 
-_Last Updated: May 06, 2025_
-
----
-
-## 🔧 1. Job Management Module
-
-### Features
-- Create and manage **Job Proposals**, **Estimates**, and **Invoices**
-- Push proposals/estimates/invoices to **FreshBooks**
-- Attach **Terms & Conditions / Contracts** to:
-  - Proposals (for large jobs)
-  - Estimates (for small jobs)
-- Include **Customer & Site Information** fields
-
-### Integration
-- FreshBooks API for syncing financial documents
+## 📌 Overview
+This Construction Web Portal is a full-featured ERP-style application tailored to construction businesses. It integrates core operational tools with advanced features like FreshBooks syncing, digital signatures, SMS alerts, and third-party integrations.
 
 ---
 
-## 👤 2. Customer Management Module
+## 🧱 Core Modules
 
-### Features
-- Track customer records, job history, and contact info
-- Assign estimates and invoices to customers
-- Customer portal access (secure login)
-  - View proposals, approve estimates, view/pay invoices
+### 1. Authentication & Access Control
+- Discord/Email/SSO login (optional)
+- Role-Based Access Control (RBAC)
+- Admin, HR, Manager, Foreman, Employee, Client roles
 
-### Integration
-- Sync customer records with **FreshBooks**
-- Store and use `freshbooks_client_id` for mapping
+### 2. Project Management
+- Create/manage construction projects
+- Task lists, Gantt charts, daily logs, delays
+- Budget tracking and milestone control
+- Assign teams and employees
 
----
+### 3. FreshBooks Integration
+- Sync proposals, estimates, and invoices
+- View FreshBooks documents in-app
+- Track client payments and statuses
+- Link FreshBooks clients to internal records
+- Webhook-based updates
 
-## 🚚 3. Fleet Management Module
+### 4. Job Estimation & Bidding
+- Client-side approval workflows
+- Auto-generate projects from approved estimates
+- Attach e-signatures to proposals
+- Include scope of work, labor, material breakdowns
 
-### Features
-- Assign vehicles to employees
-- View live GPS data (via external GPS provider)
-- Track mileage logs per job/employee
-- Schedule vehicle maintenance
+### 5. Time Tracking & Scheduling
+- GPS-based clock-in/out
+- Shift and crew assignment calendar
+- Timesheet logs and exports
+- Site-wise attendance and time approval
 
----
+### 6. Document & Blueprint Management
+- Upload blueprints, permits, drawings
+- Tag-based search and version control
+- Role-based access to documents
 
-## ⏱ 4. Employee Time Tracking Module
+### 7. Inventory & Material Management
+- Track per-site material use
+- PO creation and low-stock alerts
+- Tool/equipment logs and assignments
+- Auto-calculate job material consumption
 
-### Features
-- Clock In / Clock Out functionality (mobile-friendly)
-- Geo-location tracking on clock events
-- Weekly/hourly summaries and discrepancy reports
+### 8. Fleet Management
+- Assign vehicles to projects/employees
+- Maintenance reminders
+- Track usage and license expirations
+- Integration with GPS tracking (optional)
 
----
+### 9. Field Service Reporting
+- Mobile-friendly work reports
+- Photos, notes, checklists
+- Safety/incident forms
+- Real-time syncing with project dashboards
 
-## 📦 5. Inventory Management Module
-
-### Features
-- Track tools, materials, and job-site inventory
-- Assign items to jobs or employees
-- Low stock alerts and reorder tracking
-
----
-
-## 🛠 6. Technician Reporting & Ticketing Module
-
-### Features
-- Create service tickets with job/site/customer info
-- Assign tickets to technicians
-- Status tracking: Scheduled → In Progress → Complete
-- Technician can add job notes, photos, and materials used
-
----
-
-## 🧑‍🔧 7. Employee Management Module
-
-### Features
-- Employee profile management:
-  - Name, role, status, contact info
-  - Assigned vehicle & tool tracking
-- Show real-time GPS of assigned vehicle
-- Time tracking integration: show hours worked
-- View all assigned equipment/tools
-
-### Document Management
-- Upload employee-related documents (e.g. ID, certs, contracts)
-- View-only for employees (optional)
-- Admin/HR full access to upload/download/delete
+### 10. Customer Portal
+- View project status, invoices, documents
+- Submit service requests or messages
+- Access proposals and sign estimates
 
 ---
 
-## 📋 8. Human Resources (HR) Module
+## 🧑‍💼 HR Suite
 
-### Features
-- Create and manage **write-ups** and **corrective actions**
-- Track incident details, linked job/ticket, and required actions
-- Upload and attach supporting documentation
-- Auto-link write-up acknowledgments to employee documents
-- Secure view of employee HR history
+### 11. Employee Directory
+- Profiles with roles, certifications, contact info
+- Team assignments
 
-### Permissions
-- HR/Admin only access to view/edit HR records
-- Employees can view their own signed documents (optional)
+### 12. Recruitment & Onboarding
+- Job postings and application tracking
+- Interview scheduling and offer flow
+- New hire onboarding checklists
+
+### 13. Leave & Attendance
+- PTO/sick/vacation requests
+- Approval workflows
+- Team-based calendar view
+- Time-off balance tracking
+
+### 14. Payroll Integration
+- Hourly/salary sync with timesheets
+- Export-ready for Gusto, QuickBooks, ADP
+- Auto-calculate overtime
+
+### 15. Certification & Compliance
+- OSHA, safety, license tracking
+- Alerts for expiring qualifications
+- Required certifications by job type
+
+### 16. Performance Tracking
+- Project-based evaluations
+- KPI tracking: punctuality, quality, incidents
+- Disciplinary log
+
+### 17. Equipment Assignment
+- Issue & return logs for tools/PPE
+- Damage/replacement tracking
+- Uniform assignment tracking
 
 ---
 
-## 🔐 System & Integration Notes
+## 🔧 System Features
 
-- Authentication with Role-Based Access Control (Admin, HR, Technician, Customer)
-- API integrations:
-  - **FreshBooks** for estimates/invoices/clients
-  - **GPS/Geo API** for fleet and time tracking
-  - **Cloud storage** (e.g., AWS S3) for document uploads
+### ✍️ E-Signature Support
+- Signature pad or typed option
+- Auto-insert into PDFs
+- Signature logs and audit trail
+
+### 📲 SMS Notifications
+- Job updates, appointment reminders
+- Admin alerts and deadline warnings
+- Two-way SMS (via Twilio or similar)
+
+### 🔌 API & Integrations
+- REST API with token-based access
+- Webhooks for internal event tracking
+- Google Workspace Integration:
+  - Sync tasks/events to Google Calendar
+  - Attach Google Drive documents to projects
+  - Import onboarding forms/sheets
+
+### 📤 Exports & Reporting
+- Export project reports, timesheets, invoices
+- PDF, Excel, and CSV formats
+- Download job cards and safety documentation
 
 ---
 
-## 📁 Future Enhancements
+## 📊 Dashboards & Analytics
+- Project progress dashboard
+- HR metrics: headcount, leave, certification
+- Financial dashboard: unpaid invoices, project costs
+- Material usage, fleet status, task completion
 
-- Payroll exports from Time Tracking
-- QuickBooks integration alternative
-- Push notifications for assigned jobs or HR actions
-- Internal messaging/alerts system
+---
 
+## 🚀 Tech Stack (Recommended)
+- **Frontend:** Next.js + React + Tailwind CSS + shadcn/ui
+- **Backend:** Node.js + Express or Fastify
+- **Database:** MongoDB Atlas or PostgreSQL
+- **Auth:** JWT or Discord OAuth2
+- **Hosting:** Vercel (Frontend) + Railway (Backend)
+- **Third-Party Services:** FreshBooks API, Twilio SMS, Google Workspace API
+
+---
+
+## 📂 Suggested File Structure
+```
+/src
+  /app
+    /projects
+    /clients
+    /invoices
+    /field-service
+    /hr
+    /fleet
+    /inventory
+    /auth
+    /api
+/components
+/lib
+/utils
+```
+
+---
+
+## ✅ Next Steps
+- [ ] Set up Next.js frontend scaffold
+- [ ] Define user roles and auth flow
+- [ ] Set up MongoDB collections and Mongoose schemas
+- [ ] Build API routes for core modules
+- [ ] Integrate FreshBooks via API keys
+- [ ] Add E-Signature and SMS providers
+- [ ] Document REST API for third-party access
